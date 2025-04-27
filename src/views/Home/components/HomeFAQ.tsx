@@ -1,31 +1,64 @@
-import React, { useState } from 'react';
-import { BiChevronDown } from 'react-icons/bi';
+import React, { useState } from 'react'
+import { BiChevronDown } from 'react-icons/bi'
 
-const FAQItem = ({ question, answer, isOpen, onClick }) => (
-    <div className="border-b border-indigo-100">
-		<button
+// Added Code: Improved typing with TypeScript interface
+interface FAQItemProps {
+    question: string
+    answer: string
+    isOpen: boolean
+    onClick: () => void
+    index: number
+}
+
+// Updated Code: Enhanced FAQItem with improved accessibility and animations
+const FAQItem: React.FC<FAQItemProps> = ({
+    question,
+    answer,
+    isOpen,
+    onClick,
+    index,
+}) => (
+    <div
+        className="border-b border-indigo-100 last:border-none"
+        data-aos="fade-up"
+        data-aos-delay={index * 50}
+    >
+        <button
             onClick={onClick}
-            className="w-full py-2 px-0 md:px-4 flex items-center justify-between text-left transition-colors hover:bg-indigo-50/50 rounded-lg"
+            className={`w-full py-5 px-2 md:px-6 flex items-center justify-between text-left transition-colors rounded-lg ${
+                isOpen ? 'bg-indigo-50/80' : 'hover:bg-indigo-50/30'
+            }`}
+            aria-expanded={isOpen}
+            aria-controls={`faq-answer-${index}`}
         >
-            <h3 className="text-[16px] leading-[1.2] font-medium text-gray-900 pr-8">{question}</h3>
-            <div className={`flex-shrink-0 ml-2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                <BiChevronDown className="w-5 h-5 text-indigo-600" />
+            <h3 className="text-lg leading-relaxed font-medium text-gray-900 pr-8">
+                {question}
+            </h3>
+            <div
+                className={`flex-shrink-0 ml-2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+            >
+                <BiChevronDown
+                    className={`w-6 h-6 ${isOpen ? 'text-blue-600' : 'text-indigo-400'}`}
+                />
             </div>
         </button>
 
         <div
-            className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}
+            id={`faq-answer-${index}`}
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            }`}
+            aria-hidden={!isOpen}
         >
-            <div className="p-2 md:p-4 pt-0 text-gray-600">
+            <div className="p-2 md:p-6 pt-2 pb-5 text-gray-600 leading-relaxed">
                 {answer}
             </div>
         </div>
     </div>
-);
+)
 
-const FAQ = () => {
-    const [openIndex, setOpenIndex] = useState(0);
+const FAQ: React.FC = () => {
+    const [openIndex, setOpenIndex] = useState(0)
 
     const faqData = [
         {
@@ -72,34 +105,94 @@ const FAQ = () => {
             que: 'How does the platform help me attract more patients?',
             ans: 'The platform allows me to create a custom, SEO-optimized website, manage patient communication, and build a strong online reputation, all of which help me attract and retain more patients.',
         },
-    ];
+    ]
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 py-16 px-2 md:px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto">
-                {/* Header */}
+        <div className="py-24 px-4 sm:px-6 lg:px-8 relative">
+            {/* Added Code: Abstract background shapes for visual interest */}
+            <div className="absolute inset-0 overflow-hidden opacity-50">
+                <div className="absolute -right-10 top-20 w-80 h-80 rounded-full bg-blue-50"></div>
+                <div className="absolute -left-10 bottom-20 w-60 h-60 rounded-full bg-purple-50"></div>
+            </div>
+
+            {/* Main content */}
+            <div className="relative max-w-4xl mx-auto">
+                {/* Header with improved visual design */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">
+                        Got Questions?
+                    </h2>
+                    <h2 className="mt-2 text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
                         Frequently Asked Questions
-                    </h1>
-                    <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full" />
+                    </h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                        Find answers to common questions about our AI healthcare
+                        platform.
+                    </p>
                 </div>
 
-                {/* FAQ Items */}
-                <div className="space-y-2 bg-white rounded-2xl shadow-xl p-6">
-                    {faqData.map((faq, index) => (
-                        <FAQItem
-                            key={index}
-                            question={faq.que}
-                            answer={faq.ans}
-                            isOpen={index === openIndex}
-                            onClick={() => setOpenIndex(index === openIndex ? -1 : index)}
+                {/* FAQ Items with improved styling */}
+                <div className="bg-white rounded-2xl shadow-xl p-4 md:p-8 relative">
+                    {/* Added Code: Search input for enhanced usability */}
+                    <div className="mb-8 relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg
+                                className="h-5 w-5 text-gray-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
+                        </div>
+                        <input
+                            type="text"
+                            className="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50"
+                            placeholder="Search frequently asked questions..."
+                            aria-label="Search FAQs"
                         />
-                    ))}
+                    </div>
+
+                    <div className="space-y-2">
+                        {faqData.map((faq, index) => (
+                            <FAQItem
+                                key={index}
+                                question={faq.que}
+                                answer={faq.ans}
+                                isOpen={index === openIndex}
+                                onClick={() =>
+                                    setOpenIndex(
+                                        index === openIndex ? -1 : index,
+                                    )
+                                }
+                                index={index}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Added Code: Contact CTA for questions not answered in FAQ */}
+                    <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+                        <p className="text-gray-600">
+                            Can't find what you're looking for?
+                        </p>
+                        <div className="mt-4">
+                            <a
+                                href="#contact"
+                                className="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                            >
+                                Contact Our Support Team
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default FAQ;
+export default FAQ
