@@ -191,12 +191,32 @@ const FeaturesGrid: React.FC = () => {
                     <h3 className="text-lg font-medium text-gray-900 mb-8">
                         Trusted by leading healthcare institutions
                     </h3>
-                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                        <div className="h-8 bg-gray-200 w-24 rounded opacity-50 hover:opacity-100 transition-opacity"></div>
-                        <div className="h-8 bg-gray-200 w-32 rounded opacity-50 hover:opacity-100 transition-opacity"></div>
-                        <div className="h-8 bg-gray-200 w-28 rounded opacity-50 hover:opacity-100 transition-opacity"></div>
-                        <div className="h-8 bg-gray-200 w-24 rounded opacity-50 hover:opacity-100 transition-opacity"></div>
-                        <div className="h-8 bg-gray-200 w-32 rounded opacity-50 hover:opacity-100 transition-opacity"></div>
+                    <div className="flex justify-center items-center gap-12 md:gap-16">
+                        <img
+                            src="/img/others/apollo-logo.png"
+                            alt="Apollo Hospitals"
+                            className="h-16 object-contain border border-gray-100"
+                        />
+                        <img
+                            src="/img/others/fortis-logo.png"
+                            alt="Fortis Healthcare"
+                            className="h-14 object-contain border border-gray-100"
+                        />
+                        <img
+                            src="/img/others/max-logo.png"
+                            alt="Max Healthcare"
+                            className="h-16 object-contain border border-gray-100"
+                        />
+                        <img
+                            src="/img/others/medanta-logo.png"
+                            alt="Medanta"
+                            className="h-14 object-contain border border-gray-100"
+                        />
+                        <img
+                            src="/img/others/manipal-logo.png"
+                            alt="Manipal Hospitals"
+                            className="h-14 object-contain border border-gray-100"
+                        />
                     </div>
                 </div>
             </div>
