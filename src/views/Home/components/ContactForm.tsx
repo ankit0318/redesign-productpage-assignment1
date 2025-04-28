@@ -5,6 +5,7 @@ import { BsLinkedin, BsTwitter } from 'react-icons/bs'
 import { CgMail } from 'react-icons/cg'
 import { FiCheck, FiMapPin } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import GoogleMapComponent from '@/components/shared/GoogleMap'
 
 interface ContactFormState {
     fullname: string
@@ -320,11 +321,25 @@ const ContactForm = () => {
                             </h3>
                             <p className="text-gray-600">New Delhi, India</p>
                         </div>
-                        <img
-                            src="https://placehold.co/1200x300/f1f5f9/e2e8f0?text=Location+Map"
-                            alt="Office Location"
-                            className="w-full h-full object-cover"
-                        />
+
+                        {/* Use GoogleMapComponent with fallback */}
+                        <div className="w-full h-full">
+                            <GoogleMapComponent
+                                center={{ lat: 28.4595, lng: 77.0295 }}
+                                zoom={14}
+                                markerLabel="HQ"
+                                // The API key will be pulled from environment variables in the component
+                            />
+                        </div>
+
+                        {/* Backup static map image that will show if JS is disabled */}
+                        <noscript>
+                            <img
+                                src={`https://maps.googleapis.com/maps/api/staticmap?center=28.4595,77.0295&zoom=14&size=1200x300&markers=color:blue%7C28.4595,77.0295&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}`}
+                                alt="Map of New Delhi, India office location"
+                                className="w-full h-full object-cover"
+                            />
+                        </noscript>
                     </div>
                 </div>
             </div>
