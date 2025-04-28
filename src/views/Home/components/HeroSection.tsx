@@ -109,7 +109,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </nav>
 
             {/* Hero content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-24 flex flex-col min-h-[calc(100vh-80px)] justify-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12  pb-24 flex flex-col min-h-[calc(100vh-80px)] justify-center">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     <div className="lg:w-1/2 space-y-8">
                         <div className="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 font-medium text-sm">
