@@ -78,18 +78,17 @@ const GoogleMapComponent = ({
                 fullscreenControl: true,
             }}
         >
-            {/* Marker for the office location */}
-            <Marker
+            {/* Marker for the office location - updated to use standard Google Maps pin */}
+            <Marker 
                 position={center}
-                label={markerLabel}
-                icon={{
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 10,
-                    fillColor: '#3B82F6', // Blue color
-                    fillOpacity: 1,
-                    strokeColor: '#ffffff',
-                    strokeWeight: 2,
-                }}
+                label={markerLabel ? { 
+                    text: markerLabel,
+                    color: "#FFFFFF",
+                    fontWeight: "bold",
+                    fontSize: "14px"
+                } : undefined}
+                animation={google.maps.Animation.DROP}
+                // Using default Google Maps pin marker with no custom icon
             />
         </GoogleMap>
     ) : (
