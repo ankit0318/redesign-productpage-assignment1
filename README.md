@@ -1,5 +1,15 @@
 # Front-End Development Internship Assignment
 
+#FRONTEND UI- SaaS look
+![image](https://github.com/user-attachments/assets/2bdb56d4-518b-4c2c-ac55-3c3effde3875)
+![image](https://github.com/user-attachments/assets/f220d54d-27e1-4001-b0d9-4fc918abc7c5)
+![image](https://github.com/user-attachments/assets/38f37957-fbfc-43bf-ad8d-441d9e76c402)
+![image](https://github.com/user-attachments/assets/5fa80bc2-6e06-48a6-8b6f-157c640da2fa)
+![image](https://github.com/user-attachments/assets/be4de9c0-1ef8-43bc-952b-69cbda60566b)
+![image](https://github.com/user-attachments/assets/c746652f-c84d-490c-b739-ca5483356c0c)
+
+
+
 ## Project Setup
 
 Before starting, make sure you have the following installed:
