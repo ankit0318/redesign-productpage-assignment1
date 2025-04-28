@@ -7,13 +7,15 @@ This document outlines the implementation of a Google Maps integration in the "O
 ## Files Modified/Created
 
 1. **Created new component file**:
-   - `src/components/shared/GoogleMap/index.tsx`
+
+    - `src/components/shared/GoogleMap/index.tsx`
 
 2. **Modified existing file**:
-   - `src/views/Home/components/ContactForm.tsx`
+
+    - `src/views/Home/components/ContactForm.tsx`
 
 3. **Added environment configuration file**:
-   - `.env`
+    - `.env`
 
 ## Implementation Details
 
@@ -22,64 +24,71 @@ This document outlines the implementation of a Google Maps integration in the "O
 **What**: Created a reusable React component that wraps the Google Maps JavaScript API.
 
 **Why**:
-- Provides a more React-friendly way to integrate Google Maps
-- Enables better error handling and fallbacks
-- Makes it easy to reuse map functionality across the application
-- Allows for customization of map markers and controls
+
+-   Provides a more React-friendly way to integrate Google Maps
+-   Enables better error handling and fallbacks
+-   Makes it easy to reuse map functionality across the application
+-   Allows for customization of map markers and controls
 
 **Key Features**:
-- Uses `@react-google-maps/api` library for React integration
-- Includes a clean fallback UI when API isn't available/errors occur
-- Supports environment variable configuration for API key
-- Provides a loading state with animation
-- Implements a custom styled marker for the office location
-- Configurable zoom level and map center coordinates
+
+-   Uses `@react-google-maps/api` library for React integration
+-   Includes a clean fallback UI when API isn't available/errors occur
+-   Supports environment variable configuration for API key
+-   Provides a loading state with animation
+-   Implements a custom styled marker for the office location
+-   Configurable zoom level and map center coordinates
 
 ### 2. Contact Form Update (`src/views/Home/components/ContactForm.tsx`)
 
 **What**: Replaced the static placeholder image with our interactive Google Map component.
 
 **Why**:
-- Enhances user experience with an interactive map
-- Provides better context for the office location
-- Aligns with modern web application expectations
-- Maintains the clean UI design with overlay information
+
+-   Enhances user experience with an interactive map
+-   Provides better context for the office location
+-   Aligns with modern web application expectations
+-   Maintains the clean UI design with overlay information
 
 **Changes Made**:
-- Imported the new GoogleMapComponent
-- Configured it with specific coordinates (28.4595° N, 77.0295° E)
-- Set appropriate zoom level (14) for neighborhood context
-- Added a noscript fallback for users with JavaScript disabled
-- Preserved the existing overlay card with office information
+
+-   Imported the new GoogleMapComponent
+-   Configured it with specific coordinates (28.4595° N, 77.0295° E)
+-   Set appropriate zoom level (14) for neighborhood context
+-   Added a noscript fallback for users with JavaScript disabled
+-   Preserved the existing overlay card with office information
 
 ### 3. Environment Configuration (`.env`)
 
 **What**: Added environment variable configuration for the Google Maps API key.
 
 **Why**:
-- Security best practice to keep API keys out of source code
-- Allows for different keys in development and production environments
-- Makes it easy to update the key without changing code
-- Follows Vite's recommended approach for environment variables
+
+-   Security best practice to keep API keys out of source code
+-   Allows for different keys in development and production environments
+-   Makes it easy to update the key without changing code
+-   Follows Vite's recommended approach for environment variables
 
 **Configuration**:
-- Added `VITE_GOOGLE_MAPS_API_KEY` environment variable
-- Used Vite's `import.meta.env` approach for accessing the key
+
+-   Added `VITE_GOOGLE_MAPS_API_KEY` environment variable
+-   Used Vite's `import.meta.env` approach for accessing the key
 
 ## Usage Instructions
 
 1. **Setting up the API Key**:
-   - Obtain a Google Maps JavaScript API key from the [Google Cloud Console](https://console.cloud.google.com/)
-   - Enable both "Maps JavaScript API" and "Static Maps API" for your project
-   - Add your API key to the `.env` file:
-     ```
-     VITE_GOOGLE_MAPS_API_KEY=your_actual_api_key_here
-     ```
+
+    - Obtain a Google Maps JavaScript API key from the [Google Cloud Console](https://console.cloud.google.com/)
+    - Enable both "Maps JavaScript API" and "Static Maps API" for your project
+    - Add your API key to the `.env` file:
+        ```
+        VITE_GOOGLE_MAPS_API_KEY=your_actual_api_key_here
+        ```
 
 2. **Customizing the Map**:
-   - To change the location, update the center coordinates in ContactForm.tsx
-   - To adjust the zoom level, modify the zoom prop (higher numbers = more zoomed in)
-   - For additional map customization, refer to the [react-google-maps/api documentation](https://react-google-maps-api-docs.netlify.app/)
+    - To change the location, update the center coordinates in ContactForm.tsx
+    - To adjust the zoom level, modify the zoom prop (higher numbers = more zoomed in)
+    - For additional map customization, refer to the [react-google-maps/api documentation](https://react-google-maps-api-docs.netlify.app/)
 
 ## Fallback Mechanism
 
